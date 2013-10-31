@@ -1,0 +1,66 @@
+//класс Водитель
+	public class Driver{
+	 
+		private DriversMood mood;
+	 
+		private Boolean isOnBoard;
+		
+		private ShuttleBus bus;
+		
+		// Поехали!!!
+		public void ride(){
+			
+			if(isOnBoard){
+				
+				bus.setIsForvardDoorOpened(false);
+				
+				bus.setIsRearDoorOpened(false);
+				
+				bus.setIsStopped(false);
+				 
+			}
+			
+		}
+		
+		// остановить маршрутку на остановке	
+		public void stopAtTheBusStop(){
+			
+			bus.setIsStopped(true);
+		
+		// если водитель в плохом настроении он не открывает заднюю дверь	
+			if(mood == DriversMood.GOOD){
+				
+				 bus.setIsForvardDoorOpened(true);
+				 
+				 bus.getIsRearDoorOpened(true);
+				 
+			 }
+			 
+			else  bus.setIsForvardDoorOpened(true);
+				
+		}
+		
+		//остановить маршрутку
+		public void stop(){
+			
+			bus.setIsStopped(true);
+		
+		}
+		
+		// при подъезде к очередной остановке
+		public void onTheStopIsApproachingEvent(SomeEvent e){
+		
+			Boolean stopIsReqired = bus.stops.get(e.getNextStopName()).getIsRequired;
+			Boolean stopHasPassangers = bus.stops.get(e.getNextStopName()).getHasPassangers;
+			 
+			if(stopIsReqired || stopHasPassangers ) stopAtTheBusStop();
+			
+		}
+		
+		
+	 // getters and setters
+	 
+	 }
+	 
+	 // перечисление настроений водителя 
+	enum DriversMood {BAD, GOOD}
