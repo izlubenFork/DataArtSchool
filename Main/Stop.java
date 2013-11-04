@@ -15,14 +15,6 @@ public class Stop {
 
     }
 
-    public Stop(OdessaBusStops name, ArrayList<Passanger> passangers){
-
-        this.name = name;
-
-        this.passangers = passangers;
-
-    }
-
     public Stop(){
 
     }
